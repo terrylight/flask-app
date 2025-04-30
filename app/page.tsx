@@ -1,103 +1,251 @@
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Header Section */}
+      <header style={headerStyle}>
+        <h1 style={headerTitleStyle}>Cherie's Electrical and Electronics</h1>
+        <div style={navbarStyle}>
+          <Link href="/" style={navbarLinkStyle}>
+            Home
+          </Link>
+          <Link href="/about" style={navbarLinkStyle}>
+            About
+          </Link>
+          <Link href="/contact" style={navbarLinkStyle}>
+            Contact
+          </Link>
+          <Link href="/login" style={navbarLinkStyle}>
+            Login
+          </Link>
+          <Link href="/register" style={navbarLinkStyle}>
+            Sign Up
+          </Link>
+          <Link href="/shop" style={navbarLinkStyle}>
+            Shop
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </header>
+
+      {/* Hero Section */}
+      <div style={heroSectionStyle}>
+        <h2 style={heroTitleStyle}>Welcome to Cherie's Electrical & Electronics</h2>
+        <p style={heroDescriptionStyle}>
+          Your trusted source for quality electronics and electrical appliances
+        </p>
+        <Link href="/shop" style={buttonStyle}>
+          Browse Our Shop
+        </Link>
+      </div>
+
+      {/* Featured Products Section */}
+      <div style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>Featured Products</h2>
+        <div style={productCardContainerStyle}>
+          <div style={productCardStyle}>
+            <Image
+              src="https://via.placeholder.com/300x200?text=Electric+Kettle"
+              alt="Electric Kettle"
+              width={300}
+              height={200}
+              style={productImageStyle}
+            />
+            <h3>Electric Kettle</h3>
+            <p>$45</p>
+          </div>
+          <div style={productCardStyle}>
+            <Image
+              src="https://via.placeholder.com/300x200?text=Washing+Machine"
+              alt="Washing Machine"
+              width={300}
+              height={200}
+              style={productImageStyle}
+            />
+            <h3>Washing Machine</h3>
+            <p>$350</p>
+          </div>
+          <div style={productCardStyle}>
+            <Image
+              src="https://via.placeholder.com/300x200?text=Refrigerator"
+              alt="Refrigerator"
+              width={300}
+              height={200}
+              style={productImageStyle}
+            />
+            <h3>Refrigerator</h3>
+            <p>$500</p>
+          </div>
+          <div style={productCardStyle}>
+            <Image
+              src="https://via.placeholder.com/300x200?text=LED+TV"
+              alt="LED TV"
+              width={300}
+              height={200}
+              style={productImageStyle}
+            />
+            <h3>LED TV</h3>
+            <p>$700</p>
+          </div>
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div style={aboutSectionStyle}>
+        <h2 style={sectionTitleStyle}>About Teresia</h2>
+        <p style={aboutTextStyle}>
+          Teresia is passionate about providing high-quality electrical and
+          electronic products to make your home more comfortable. With years of
+          experience, Cherie's Electrical and Electronics aims to be your go-to
+          source for reliable and affordable products. We're dedicated to customer
+          satisfaction and offer a range of products that fit your needs.
+        </p>
+      </div>
+
+      {/* Footer Section */}
+      <div style={footerStyle}>
+        <p>Contact Us: email@example.com | Phone: 123-456-7890</p>
+        <p>Follow us on Social Media:</p>
+        <Link href="#" style={footerLinkStyle}>
+          Facebook
+        </Link>
+        |
+        <Link href="#" style={footerLinkStyle}>
+          Instagram
+        </Link>
+        |
+        <Link href="#" style={footerLinkStyle}>
+          Twitter
+        </Link>
+      </div>
     </div>
   );
 }
+
+// Inline Styles
+const headerStyle: React.CSSProperties = {
+  backgroundColor: "#2c3e50",
+  color: "white",
+  padding: "30px 0",
+  textAlign: "center",
+  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+};
+
+const headerTitleStyle: React.CSSProperties = {
+  fontSize: "50px",
+  margin: 0,
+  fontFamily: "'Roboto', sans-serif",
+};
+
+const navbarStyle: React.CSSProperties = {
+  textAlign: "center",
+  marginTop: "20px",
+};
+
+const navbarLinkStyle: React.CSSProperties = {
+  color: "white",
+  margin: "0 15px",
+  textDecoration: "none",
+  fontWeight: "600",
+  fontSize: "18px",
+};
+
+const navbarLinkHoverStyle: React.CSSProperties = {
+  textDecoration: "underline",
+};
+
+const heroSectionStyle: React.CSSProperties = {
+  background: "linear-gradient(to right, #3498db, #8e44ad)",
+  color: "white",
+  padding: "100px 0",
+  textAlign: "center",
+  animation: "fadeIn 2s ease-in-out",
+};
+
+const heroTitleStyle: React.CSSProperties = {
+  fontSize: "70px",
+  marginBottom: "20px",
+  fontFamily: "'Roboto', sans-serif",
+};
+
+const heroDescriptionStyle: React.CSSProperties = {
+  fontSize: "24px",
+  maxWidth: "800px",
+  margin: "0 auto",
+  marginBottom: "30px",
+};
+
+const buttonStyle: React.CSSProperties = {
+  backgroundColor: "#ff7f50",
+  color: "white",
+  padding: "15px 30px",
+  textDecoration: "none",
+  fontSize: "20px",
+  borderRadius: "5px",
+  transition: "background-color 0.3s ease",
+};
+
+const sectionStyle: React.CSSProperties = {
+  padding: "50px 20px",
+  textAlign: "center",
+};
+
+const sectionTitleStyle: React.CSSProperties = {
+  fontSize: "36px",
+  marginBottom: "40px",
+  fontFamily: "'Roboto', sans-serif",
+};
+
+const productCardContainerStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+};
+
+const productCardStyle: React.CSSProperties = {
+  width: "22%",
+  margin: "15px",
+  backgroundColor: "white",
+  padding: "20px",
+  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+  textAlign: "center",
+  borderRadius: "8px",
+  transition: "transform 0.3s ease",
+};
+
+const productImageStyle: React.CSSProperties = {
+  width: "100%",
+  height: "auto",
+  borderRadius: "8px",
+};
+
+const aboutSectionStyle: React.CSSProperties = {
+  backgroundColor: "#ecf0f1",
+  padding: "50px 20px",
+  textAlign: "center",
+  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+};
+
+const aboutTextStyle: React.CSSProperties = {
+  fontSize: "20px",
+  maxWidth: "800px",
+  margin: "0 auto",
+};
+
+const footerStyle: React.CSSProperties = {
+  backgroundColor: "#2c3e50",
+  color: "white",
+  textAlign: "center",
+  padding: "20px 0",
+  marginTop: "50px",
+};
+
+const footerLinkStyle: React.CSSProperties = {
+  color: "white",
+  margin: "0 15px",
+  textDecoration: "none",
+  fontWeight: "600",
+};
+

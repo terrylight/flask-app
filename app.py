@@ -32,6 +32,16 @@ class ContactForm(db.Model):
     def __repr__(self):
         return f"ContactForm('{self.name}', '{self.email}')"
 
+# Product model
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    description = db.Column(db.Text, nullable=True)
+
+    def __repr__(self):
+        return f"Product('{self.name}', {self.price})"
+
 # Initialize database tables
 with app.app_context():
     db.create_all()
@@ -60,10 +70,10 @@ def contact():
         # Getting form data
         name = request.form['name']
         email = request.form['email']
-        
+
         # Create new contact form entry
         new_entry = ContactForm(name=name, email=email)
-        
+
         # Add the entry to the database
         db.session.add(new_entry)
         db.session.commit()
@@ -72,15 +82,24 @@ def contact():
         return redirect(url_for('contact'))
     return render_template('contact.html')
 
+# Shop route (displaying the products)
+@app.route('/shop')
+def shop():
+    # Fetch all products from the database
+    products = Product.query.all()
+
+    # Pass the products to the template
+    return render_template('shop.html', products=products)
+
 # User Registration Route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-        
+
         # Check if the user already exists
         user = User.query.filter_by(username=username).first()
         if user:
@@ -91,7 +110,7 @@ def register():
         new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        
+
         flash('Your account has been created! You can now log in.', 'success')
         return redirect(url_for('login'))
 
@@ -131,6 +150,5 @@ def logout():
     return redirect(url_for('login'))
 
 # Running the application with Waitress
-from waitress import serve
 if __name__ == '__main__':
-    serve(app, host="0.0.0.0", port=5001)
+    app.run(debug=True, host='127.0.0.1', port=5001)
